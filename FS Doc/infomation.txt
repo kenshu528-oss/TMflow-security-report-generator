@@ -1,0 +1,3 @@
+TOKEN = "svza5d5kdulphw7kj2iba2lqyacs4nmhlwuhlykv7r33z3nxgvkq"
+SUBDOMAIN = "tm-robot"
+VERSION_ID = "1936462473699050499" 
