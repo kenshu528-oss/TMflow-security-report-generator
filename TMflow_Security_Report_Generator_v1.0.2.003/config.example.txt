@@ -1,0 +1,8 @@
+# TMflow Security Report Generator 配置檔案範例
+# 複製此檔案為 config.txt 並填入實際的配置值
+# 請勿將 config.txt 提交到 Git
+
+API_TOKEN=your_api_token_here
+SUBDOMAIN=your_subdomain_here
+ORGANIZATION=Your Organization Name
+OUTPUT_PATH=reports

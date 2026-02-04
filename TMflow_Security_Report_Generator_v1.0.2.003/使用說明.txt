@@ -1,0 +1,28 @@
+# TMflow Security Report Generator v1.0.2.003
+
+## 快速開始
+
+1. 複製 config.example.txt 為 config.txt
+2. 編輯 config.txt 填入您的 API 資訊：
+   ```
+   API_TOKEN=your_api_token_here
+   SUBDOMAIN=tm-robot
+   ORGANIZATION=Techman Robot
+   OUTPUT_PATH=reports
+   ```
+3. 執行 TMflow_Security_Report_Generator.exe
+
+## 系統需求
+
+- Windows 10 或更新版本
+- 網路連接（用於 Finite State API）
+
+## 注意事項
+
+- 第一次啟動可能需要較長時間
+- 確保 fs-reporter 和 fs-report 資料夾在同一目錄
+- 報告會輸出到 reports 資料夾
+
+## 技術支援
+
+GitHub: https://github.com/kenshu528-oss/TMflow-security-report-generator

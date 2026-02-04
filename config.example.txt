@@ -1,14 +1,8 @@
-# Finite State API 配置範例
-# 複製此文件為 config.txt 並填入實際值
+# TMflow Security Report Generator 配置檔案範例
+# 複製此檔案為 config.txt 並填入實際的配置值
+# 請勿將 config.txt 提交到 Git
 
-TOKEN = "your-api-token-here"
-SUBDOMAIN = "your-subdomain"
-ORGANIZATION = "Your Organization Name"
-
-# TMflow 版本信息
-# 格式: VERSION_NAME = "VERSION_ID"
-VERSION_2_26_1200 = "your-version-id-here"
-VERSION_3_12_1300 = "your-version-id-here"
-
-# 報告輸出目錄
-OUTPUT_DIR = "reports"
+API_TOKEN=your_api_token_here
+SUBDOMAIN=your_subdomain_here
+ORGANIZATION=Your Organization Name
+OUTPUT_PATH=reports

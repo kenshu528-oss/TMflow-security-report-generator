@@ -1,30 +1,65 @@
-# TMflow Security Report Generator v1.0.2
+# TMflow Security Report Generator v1.0.2.002
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.11+-green.svg)
 ![Status](https://img.shields.io/badge/status-active-success.svg)
+![GUI](https://img.shields.io/badge/GUI-tkinter-orange.svg)
 
-這是 Techman Robot TMflow 產品的安全報告生成工具，基於 Finite State 平台 API 自動生成專業的安全分析報告。
+這是 Techman Robot TMflow 產品的安全報告生成工具，基於 Finite State 平台 API 自動生成專業的安全分析報告。提供現代化圖形介面和命令列兩種使用方式。
 
-## 功能特色
+## 🚀 快速開始
 
-- 🔒 **安全分析**: 全面的韌體安全漏洞分析
-- 📊 **多種格式**: 支援 PDF、HTML、CSV、XLSX 格式
-- 🤖 **自動化**: 一鍵生成標準和詳細報告
-- ⏰ **時間戳記**: 自動添加時間戳避免文件混淆
-- 🏢 **企業級**: 專業報告格式適合企業使用
+### 圖形化介面 (推薦)
+```bash
+# 啟動現代化 GUI 應用程式
+python ui_modern.py
+```
+
+### 命令列模式
+```bash
+# 使用自動化腳本生成報告
+python generate_reports.py
+```
+
+## 📋 功能特色
+
+### 🎯 圖形化介面
+- **現代化深色主題**: 專業的視覺設計
+- **實際 API 整合**: 直接從 Finite State 平台載入專案和版本
+- **動態資料更新**: Refresh 按鈕載入最新的專案資料
+- **批量報告生成**: 同時處理多個版本
+- **即時進度顯示**: 進度條和詳細日誌
+- **智能配置管理**: 自動載入和儲存設定
+- **錯誤處理機制**: 完善的錯誤提示和恢復
+
+### 📊 報告格式
+- **Standard Report**: 標準安全報告
+- **Detailed Report**: 詳細漏洞分析報告
+- **自動時間戳**: 所有報告包含生成時間
+- **PDF 格式**: 專業的報告輸出格式
+
+### 🔧 技術特點
+- **實際 API 調用**: 直接連接 Finite State 平台獲取最新資料
+- **雙工具整合**: fs-reporter (PDF) + fs-report (多格式)
+- **正確的認證**: 使用 X-Authorization header 和正確的 API 端點
+- **背景處理**: API 調用和報告生成不阻塞介面
+- **配置檔案**: 安全的設定管理
+- **多執行緒**: 背景處理不阻塞介面
 
 ## 目錄結構
 
 ```
-FS ReportGenerator_v1.0.2/
-├── fs-reporter/          # PDF 報告生成工具（舊格式）
-├── fs-report/           # HTML/CSV/XLSX 報告生成工具（新格式）
-├── reports/             # 生成的報告輸出目錄
-├── FS Doc/              # 範例和教學文檔（參考用）
-├── config.txt           # 配置文件
-├── generate_reports.py  # 自動報告生成腳本
-└── README.md           # 本文件
+TMflow-security-report-generator/
+├── ui_modern.py          # 🎨 現代化圖形介面 (主要)
+├── generate_reports.py   # 🤖 命令列自動化腳本
+├── fs-reporter/          # 📄 PDF 報告生成工具（舊格式）
+├── fs-report/           # 📊 HTML/CSV/XLSX 報告生成工具（新格式）
+├── reports/             # 📁 生成的報告輸出目錄
+├── config.txt           # ⚙️ 配置文件 (不提交到 Git)
+├── config.example.txt   # 📋 配置文件範例
+├── USAGE_GUIDE.md       # 📖 詳細使用指南
+├── UI_Design_Document.md # 🎨 UI 設計文件
+└── FS Doc/              # 📚 範例和教學文檔（參考用）
 ```
 
 ## 安裝
@@ -46,20 +81,29 @@ cp config.example.txt config.txt
 # 編輯 config.txt 填入您的 API 資訊
 ```
 
-### 3. 生成報告
+### 3. 使用應用程式
 
-#### 方法一：使用自動腳本（推薦）
+#### 🎨 圖形化介面（推薦新手）
+```bash
+python ui_modern.py
+```
+- 現代化深色主題介面
+- 直觀的操作流程
+- 即時進度和日誌顯示
+- 詳細使用說明請參考 [USAGE_GUIDE.md](USAGE_GUIDE.md)
+
+#### 🤖 命令列模式（適合自動化）
 ```bash
 python generate_reports.py
 ```
 
-#### 方法二：手動生成單個報告
+#### 🔧 手動生成單個報告
 ```bash
 # 標準報告
-python fs-reporter/main.py -t [TOKEN] -s [SUBDOMAIN] -pvi [VERSION_ID] -n "Your Organization" -o "reports/report_name.pdf"
+python fs-reporter/main.py -t [TOKEN] -s [SUBDOMAIN] -pvi [VERSION_ID] -n "Techman Robot" -o "reports/report_name.pdf"
 
 # 詳細報告
-python fs-reporter/main.py -t [TOKEN] -s [SUBDOMAIN] -pvi [VERSION_ID] -n "Your Organization" -d -o "reports/report_name.pdf"
+python fs-reporter/main.py -t [TOKEN] -s [SUBDOMAIN] -pvi [VERSION_ID] -n "Techman Robot" -d -o "reports/report_name.pdf"
 ```
 
 ## 配置說明
@@ -67,11 +111,16 @@ python fs-reporter/main.py -t [TOKEN] -s [SUBDOMAIN] -pvi [VERSION_ID] -n "Your 
 編輯 `config.txt` 文件（從 `config.example.txt` 複製）：
 
 ```txt
-TOKEN = "your-finite-state-api-token"
-SUBDOMAIN = "your-subdomain"
-ORGANIZATION = "Your Organization Name"
-VERSION_2_26_1200 = "your-version-id"
+API_TOKEN=your-finite-state-api-token
+SUBDOMAIN=your-subdomain
+ORGANIZATION=Techman Robot
+OUTPUT_PATH=reports
 ```
+
+**注意**: 
+- 配置檔案會被 `.gitignore` 忽略，不會提交到 Git
+- 圖形介面會自動載入和儲存配置
+- 點擊 "Reconnect" 按鈕會驗證並儲存當前設定
 
 ## 版本信息
 
