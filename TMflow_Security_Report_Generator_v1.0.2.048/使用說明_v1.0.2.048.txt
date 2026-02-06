@@ -1,0 +1,41 @@
+TMflow Security Report Generator v1.0.2.048
+UI 佈局比例修正版 (PanedWindow + 動態調整)
+
+=== 快速開始 ===
+
+1. 編輯 config.txt 檔案，填入您的 API Token
+2. 雙擊執行 TMflow_Security_Report_Generator_v1.0.2.048.exe
+3. 應用程式會自動連接 API
+4. 點擊 "Refresh" 載入專案資料
+5. 選擇要生成報告的版本
+6. 點擊 "Generate Reports" 生成報告
+
+=== 版本特色 ===
+
+✅ UI 佈局比例修正（成功版本）
+   - 使用 PanedWindow + 視窗大小監聽
+   - 動態維持 60:40 的左右比例
+   - 視窗放大後比例正確
+
+✅ 繼承所有功能
+   - 按鈕文字國際化（v1.0.2.045）
+   - API 連接狀態完整顯示（v1.0.2.044）
+   - 啟動自動連線功能（v1.0.2.043）
+   - 完整的報告生成功能
+
+=== 詳細說明 ===
+
+請參閱以下文檔：
+- README.md - 專案概述和快速開始
+- USAGE_GUIDE.md - 詳細使用指南
+- CHANGELOG.md - 完整更新記錄
+
+=== 技術支援 ===
+
+如有問題，請查看：
+1. USAGE_GUIDE.md 中的常見問題
+2. CHANGELOG.md 中的已知問題
+3. GitHub Issues
+
+版本: v1.0.2.048
+日期: 2026-02-06

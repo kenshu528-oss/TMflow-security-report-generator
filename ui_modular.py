@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-TMflow Security Report Generator - 模組化版本 v1.0.2.045
-按鈕文字國際化修正版
+TMflow Security Report Generator - 模組化版本 v1.0.2.048
+UI 佈局比例修正版 (使用 PanedWindow)
 """
 
 import tkinter as tk
@@ -361,7 +361,7 @@ class ModularTMflowReportGeneratorUI:
     
     def setup_window(self):
         """設定主視窗"""
-        self.root.title("TMflow Security Report Generator v1.0.2.045")
+        self.root.title("TMflow Security Report Generator v1.0.2.048")
         self.root.geometry("900x550")
         self.root.resizable(True, True)
         self.root.configure(bg='#2b2b2b')
@@ -406,13 +406,28 @@ class ModularTMflowReportGeneratorUI:
         main_frame = ttk.Frame(self.root, style='Dark.TFrame', padding="15")
         main_frame.pack(fill=tk.BOTH, expand=True)
         
+        # 使用 PanedWindow 來精確控制左右比例
+        self.paned = tk.PanedWindow(main_frame, orient=tk.HORIZONTAL, 
+                                    bg='#2b2b2b', sashwidth=5, 
+                                    sashrelief=tk.FLAT, bd=0,
+                                    showhandle=False)  # 隱藏拖動手柄
+        self.paned.pack(fill=tk.BOTH, expand=True)
+        
         # 左側區域
-        left_frame = ttk.Frame(main_frame, style='Dark.TFrame')
-        left_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=(0, 15))
+        left_frame = ttk.Frame(self.paned, style='Dark.TFrame')
+        self.paned.add(left_frame, stretch='always')
         
         # 右側區域
-        right_frame = ttk.Frame(main_frame, style='Dark.TFrame')
-        right_frame.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
+        right_frame = ttk.Frame(self.paned, style='Dark.TFrame')
+        self.paned.add(right_frame, stretch='always')
+        
+        # 禁用 PanedWindow 的手動拖動
+        self.paned.bind('<Button-1>', lambda e: 'break')
+        self.paned.bind('<B1-Motion>', lambda e: 'break')
+        
+        # 綁定視窗大小變化事件，動態調整分隔位置
+        self.resize_timer = None
+        self.root.bind('<Configure>', self.on_window_resize)
         
         # 建立各區域
         self.create_projects_section(left_frame)
@@ -596,9 +611,31 @@ class ModularTMflowReportGeneratorUI:
                                                 insertbackground='white')
         self.log_text.pack(fill=tk.BOTH, expand=True)
     
+    def on_window_resize(self, event):
+        """視窗大小變化時，動態調整 PanedWindow 分隔位置以維持 60:40 比例"""
+        # 只處理主視窗的 Configure 事件
+        if event.widget == self.root:
+            # 取消之前的計時器
+            if self.resize_timer:
+                self.root.after_cancel(self.resize_timer)
+            # 延遲 100ms 執行，避免在調整過程中頻繁觸發
+            self.resize_timer = self.root.after(100, self.adjust_paned_position)
+    
+    def adjust_paned_position(self):
+        """調整 PanedWindow 分隔位置為 60:40"""
+        try:
+            # 獲取 PanedWindow 的實際寬度
+            paned_width = self.paned.winfo_width()
+            if paned_width > 1:  # 確保已經渲染
+                # 計算 60% 的位置
+                sash_position = int(paned_width * 0.6)
+                self.paned.sash_place(0, sash_position, 0)
+        except:
+            pass  # 忽略任何錯誤
+    
     def load_initial_data(self):
         """載入初始資料 - v1.0.2.042 可分享版本"""
-        self.log_message("TMflow Security Report Generator v1.0.2.045")
+        self.log_message("TMflow Security Report Generator v1.0.2.046")
         
         # 優先載入保存的專案資料（保持原有邏輯）
         if self.config["PROJECTS_DATA"]:
