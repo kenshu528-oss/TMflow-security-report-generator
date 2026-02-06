@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-TMflow Security Report Generator - 模組化版本 v1.0.2.048
-UI 佈局比例修正版 (使用 PanedWindow)
+TMflow Security Report Generator - 模組化版本 v1.0.2.049
+執行檔瘦身優化版
 """
 
 import tkinter as tk
@@ -361,7 +361,7 @@ class ModularTMflowReportGeneratorUI:
     
     def setup_window(self):
         """設定主視窗"""
-        self.root.title("TMflow Security Report Generator v1.0.2.048")
+        self.root.title("TMflow Security Report Generator v1.0.2.049")
         self.root.geometry("900x550")
         self.root.resizable(True, True)
         self.root.configure(bg='#2b2b2b')
@@ -634,8 +634,8 @@ class ModularTMflowReportGeneratorUI:
             pass  # 忽略任何錯誤
     
     def load_initial_data(self):
-        """載入初始資料 - v1.0.2.042 可分享版本"""
-        self.log_message("TMflow Security Report Generator v1.0.2.046")
+        """載入初始資料 - v1.0.2.049 瘦身版本"""
+        self.log_message("TMflow Security Report Generator v1.0.2.049")
         
         # 優先載入保存的專案資料（保持原有邏輯）
         if self.config["PROJECTS_DATA"]:
